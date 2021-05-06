@@ -46,13 +46,13 @@ const fetchISSFlyOverTimes = (coords, callback) => {
       return;
     }
 
-    const passes = JSON.parse(body).response;
-    callback(null, passes);
+    const times = JSON.parse(body).response;
+    callback(null, times);
   });
 };
 
 //FINAL FUNCTION
-const nextISSTimesForMyLocation = function(callback) {
+const nextISSTimesForMyLocation = (callback) => {
   fetchMyIP((error, ip) => {
     if (error) {
       callback(error, null);
