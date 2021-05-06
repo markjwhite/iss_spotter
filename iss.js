@@ -1,7 +1,7 @@
 const request = require("request");
 
 const fetchMyIP = function(callback) {
-  request('https://geo.ipify.org/api/v1?apiKey=at_Qxq0lwZv9J0lXC060DNgna3EHrEc6&ipAddress=', (error, response, body) => {
+  request('https://api.ipify.org?format=json', (error, response, body) => {
     if (error) {
       callback(error, null);
       return;
@@ -12,8 +12,8 @@ const fetchMyIP = function(callback) {
       return;
     }
 
-    const data = JSON.parse(body);
-    callback(null, data.ip);
+    const ip = JSON.parse(body).ip;
+    callback(null, ip);
   });
 };
 
